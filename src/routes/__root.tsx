@@ -12,7 +12,6 @@ import type { QueryClient } from '@tanstack/react-query'
 import type { ConvexReactClient } from 'convex/react'
 import Devtools from '~/components/Devtools'
 import LiquidMetalHover from '~/components/LiquidMetalHover'
-import VitalsReporter from '~/components/VitalsReporter'
 import { sessionQueryOptions } from '~/lib/auth'
 import { authClient } from '~/lib/auth-client'
 import { siteSocialMeta } from '~/lib/structured-data'
@@ -42,6 +41,8 @@ export const Route = createRootRouteWithContext<{
         content: '#050607',
         media: '(prefers-color-scheme: dark)',
       },
+      // v1 is an archive: search engines index only aliabbas.net.
+      { name: 'robots', content: 'noindex, nofollow' },
       { title: 'Ali Abbas' },
       {
         name: 'description',
@@ -77,6 +78,12 @@ function RootComponent() {
         <HeadContent />
       </head>
       <body className="bg-background text-foreground flex min-h-svh flex-col font-sans antialiased">
+        <a
+          href="https://aliabbas.net"
+          className="bg-foreground text-background block px-4 py-2 text-center text-sm"
+        >
+          This is the old version of my site. Go to the new site at aliabbas.net
+        </a>
         <ConvexBetterAuthProvider
           client={convexQueryClient.convexClient}
           authClient={authClient as unknown as AuthClient}
@@ -86,7 +93,6 @@ function RootComponent() {
           <MotionConfig reducedMotion="user">
             <Outlet />
           </MotionConfig>
-          <VitalsReporter />
           <LiquidMetalHover />
           <Devtools />
         </ConvexBetterAuthProvider>

@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "ali-abbas",
+  "name": "ali-abbas-v1",
   "account_id": "bf718ef53febc0e26a0d63955b33c25d",
   "compatibility_date": "2025-12-09",
   "compatibility_flags": ["nodejs_compat"],
@@ -34,24 +34,10 @@
       },
     },
   ],
-  "triggers": {
-    "crons": ["17 * * * *"],
-  },
+  // The cron runs only on the current site: both use the same D1.
   "routes": [
     {
-      "pattern": "aliabbas.dev",
-      "custom_domain": true,
-    },
-    {
-      "pattern": "www.aliabbas.dev",
-      "custom_domain": true,
-    },
-    {
-      "pattern": "aliabbas.net",
-      "custom_domain": true,
-    },
-    {
-      "pattern": "www.aliabbas.net",
+      "pattern": "v1.aliabbas.net",
       "custom_domain": true,
     },
   ],
@@ -59,6 +45,6 @@
     "VITE_CONVEX_URL": "https://valiant-penguin-216.convex.cloud",
     "VITE_CONVEX_SITE_URL": "https://valiant-penguin-216.convex.site",
     // The frontend hostnames that the Turnstile check accepts.
-    "TURNSTILE_HOSTNAMES": "aliabbas.net,www.aliabbas.net",
+    "TURNSTILE_HOSTNAMES": "v1.aliabbas.net",
   },
 }

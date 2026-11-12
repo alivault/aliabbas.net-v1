@@ -22,7 +22,7 @@ permissions:
   contents: read
 
 env:
-  WORKER_NAME: ali-abbas
+  WORKER_NAME: ali-abbas-v1
 
 jobs:
   ship:
