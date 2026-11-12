@@ -5,11 +5,10 @@ name: Test and deploy
 # If they fail, the rollback job puts the previous version back. Pull
 # requests run the same checks and tests, and do not deploy.
 
+# This is the v1 archive: it deploys only when started by hand (Actions,
+# "Run workflow"), or with `vp run deploy` on a machine with a Cloudflare
+# login. A push does not deploy.
 on:
-  push:
-    branches:
-      - master
-  pull_request:
   workflow_dispatch:
 
 # A newer push to a pull request cancels the older run. On master each
